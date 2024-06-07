@@ -1,0 +1,12 @@
+1.
+ContentProvider前置知识：runtimePermission
+
+    why:运行时动态申请权限，而非不给权限就不能使用app
+    what:需要用到运行时权限的一般都是危险权限，仅在manifest.xml中申请还不够，需要在代码中动态处理
+    how：
+        1. 在AndroidManifest.xml中申请权限
+        2. 在activity的onCreate中设置监听
+            监听的时候利用ContextCompat.checkSelfPermission判断是否已经授权
+                如果已经授权，则利用intent.data加入权限，再调用相关函数打开或者直接打开需要的activity
+                如果没有授权，调用ActivityCompact.requestPermissions跳转至申请权限界面
+        3. 重写 onRequestPermissionsResult, 这边根据requestcode进行后续操作
