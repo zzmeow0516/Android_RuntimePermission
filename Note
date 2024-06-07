@@ -10,3 +10,10 @@ ContentProvider前置知识：runtimePermission
                 如果已经授权，则利用intent.data加入权限，再调用相关函数打开或者直接打开需要的activity
                 如果没有授权，调用ActivityCompact.requestPermissions跳转至申请权限界面
         3. 重写 onRequestPermissionsResult, 这边根据requestcode进行后续操作
+
+2.
+使用contentResolver
+contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null,null, null)
+
+3.
+创建自己的contentProvider
